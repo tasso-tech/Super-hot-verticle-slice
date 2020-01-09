@@ -8,7 +8,7 @@ public class playerMovement : MonoBehaviour
 
     float targetScale;
     float lerpSpeed = 2;
-    
+
     // Start is called before the first frame update
     void Start()
     {
