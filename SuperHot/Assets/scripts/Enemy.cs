@@ -13,7 +13,6 @@ public class Enemy : MonoBehaviour
     {
         Player = GameObject.FindGameObjectWithTag("Player");
 
-
         if(Player == null)
         {
             Debug.Log("tag player");

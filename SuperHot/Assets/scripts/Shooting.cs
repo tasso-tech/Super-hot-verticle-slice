@@ -10,25 +10,25 @@ public class Shooting : MonoBehaviour
     private float speed = 10f;
     public GameObject bulletPrefab;
     public Transform firePoint;
-
-
+    public float DestroyTime = 0.1f;
 
     void Update()
     {
-
         if (fireCountdown <= 0)
         {
             Shoot();
-            fireCountdown = 9f / fireRate;
+            fireCountdown = 1.5f / fireRate;
         }
 
         fireCountdown -= Time.deltaTime;
-
     }
 
     void Shoot()
     {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+       var bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * fireRate;
+
+        Destroy(bullet, DestroyTime);
     }
 
 }
