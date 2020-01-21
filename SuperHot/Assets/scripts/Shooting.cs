@@ -28,7 +28,7 @@ public class Shooting : MonoBehaviour
        var bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     
 
-        //Destroy(bullet, DestroyTime);
+        Destroy(bullet, DestroyTime);
     }
 
 }
