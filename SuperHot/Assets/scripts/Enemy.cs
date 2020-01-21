@@ -9,6 +9,11 @@ public class Enemy : MonoBehaviour
     NavMeshAgent agent;
     Animator anim;
 
+    public float damageAmount = 1f;
+
+    [SerializeField]
+    float attackTime = 2f;
+
      void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -35,7 +40,15 @@ public class Enemy : MonoBehaviour
             anim.SetBool("Idle", false);
             anim.SetBool("Attack", true);
             anim.SetBool("walking", true);
+            StartCoroutine(AttackTime());
         }
+    }
+
+   IEnumerator AttackTime()
+    {
+        yield return new WaitForSeconds(0.5f);
+        PlayerHealth.singleton.DamagePlayer(damageAmount);
+        yield return new WaitForSeconds(attackTime);
     }
 
 
